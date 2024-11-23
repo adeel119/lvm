@@ -8,7 +8,7 @@
         vg: vg1
         pvs: /dev/sdb
 
-    - name: crete volume group
+    - name: create volume group
       lvg:
        name: vg1
        pvs: /dev/sdb
