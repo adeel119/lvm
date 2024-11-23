@@ -7,12 +7,12 @@
       command:  pvcreate /dev/sdb 
       become: yes
     - name: create volume group
-      lvg:
+      community.general.lvg
        name: vg1
        pvs: /dev/sdb
 
     - name: creating LV
-      lvol:
+      community.general.lvol:
         vg: vg1
         lv: lv1
         size: 5g
