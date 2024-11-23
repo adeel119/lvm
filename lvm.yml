@@ -3,11 +3,6 @@
   hosts: all
   become: yes
   tasks:
-    - name: creating pv
-      lvg:
-        vg: vg1
-        pvs: /dev/sdb
-
     - name: create volume group
       lvg:
        name: vg1
