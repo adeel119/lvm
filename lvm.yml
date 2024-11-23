@@ -10,7 +10,7 @@
 
     - name: Create Volume Group
       community.general.lvg:
-        name: vg1
+        vg: vg1
         pvs: /dev/sdb
 
     - name: Create Logical Volume
