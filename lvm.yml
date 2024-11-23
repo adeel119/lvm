@@ -1,0 +1,45 @@
+---
+- name: creating new lvm
+  hosts: all
+  become: yes
+  tasks:
+    - name: creating pv
+      lvg:
+        vg: vg1
+        pvs: /dev/sdb
+
+    - name: crete volume group
+      lvg:
+       name: vg1
+       pvs: /dev/sdb
+
+    - name: creating LV
+      lvol:
+        vg: vg1
+        lv: lv1
+        size: 5g
+
+    - name: crating file system
+      filesystem:
+        fstype: xfs
+        dev: /dev/vg1/lv1
+
+    - name: mount volume
+      file:
+        path: /root/newdir
+        stat: directory
+
+    - name: mount lv
+      mount:
+        path: /root/newdir
+        src: /dev/vg1/lv1
+        fstype: xfs
+        state: mounted
+
+    - name: make it boot persistant 
+      mount:
+        path: /root/newdir
+        drc: /etc/fstab
+        fstype: xfs
+        state: present
+
