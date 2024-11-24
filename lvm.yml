@@ -17,7 +17,7 @@
       community.general.lvol:
         vg: vg1
         lv: lv1
-        size: 5g
+        size: 100%FULL
 
     - name: Create File System
       ansible.builtin.filesystem:
